@@ -4,6 +4,11 @@ import { connect } from 'react-redux';
 import { handleInitialData } from '../actions/shared'
 import LoadingBar from 'react-redux-loading'
 // Components
+import Home from './Home'
+import NewQuestion from './NewQuestion'
+import LeaderBoard from './Leaderboard'
+import Question from './Question'
+import Nav from './Nav'
 
 
 
@@ -24,10 +29,22 @@ setTimeout(() => {
 
 
     return (
-<div>
-  {authedUser}
-  {users.id}
-</div>
+      <Router>
+      <Fragment>
+        <LoadingBar />
+        <div className='container'>
+          <Nav />
+          {this.props.loading === true
+            ? null
+            : <div>
+                <Route path='/' exact component={Home} />
+                <Route path='/question/:id' component={Question} />
+                <Route path='/new' component={NewQuestion} />
+                <Route path='/leaderboard' component={LeaderBoard} />
+              </div>}
+        </div>
+      </Fragment>
+    </Router>
     )
   }
 }
