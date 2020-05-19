@@ -3,12 +3,15 @@ import { BrowserRouter as Router, Route } from 'react-router-dom'
 import { connect } from 'react-redux';
 import { handleInitialData } from '../actions/shared'
 import LoadingBar from 'react-redux-loading'
+
+
 // Components
 import Home from './Home'
 import NewQuestion from './NewQuestion'
 import LeaderBoard from './Leaderboard'
 import Question from './Question'
 import Nav from './Nav'
+import Login from './Login'
 
 
 
@@ -21,11 +24,11 @@ class App extends Component {
   }
 
   render() {
-const { loading, users, authedUser} = this.props
+const { loading, users, authedUser, questions, userIDs} = this.props
 
 setTimeout(() => {
-  console.log(users)  
-}, 3000);
+  console.log(loading)
+}, 2000);
 
 
     return (
@@ -35,12 +38,9 @@ setTimeout(() => {
         <div className='container'>
           <Nav />
           {this.props.loading === true
-            ? null
+            ? <Login />
             : <div>
                 <Route path='/' exact component={Home} />
-                <Route path='/question/:id' component={Question} />
-                <Route path='/new' component={NewQuestion} />
-                <Route path='/leaderboard' component={LeaderBoard} />
               </div>}
         </div>
       </Fragment>
@@ -49,12 +49,9 @@ setTimeout(() => {
   }
 }
 
-function mapStateToProps ({ authedUser, users, questions }) {
+function mapStateToProps ({ authedUser, users, questions, loading }) {
   return {
     loading: authedUser === null,
-    users,
-    authedUser,
-    questions
   }
 }
 
