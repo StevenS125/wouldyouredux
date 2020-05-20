@@ -41,6 +41,8 @@ setTimeout(() => {
             ? <Login />
             : <div>
                 <Route path='/' exact component={Home} />
+                <Route path='/new' component={NewQuestion} />
+                <Route path='/leaderboard' component={LeaderBoard} />
               </div>}
         </div>
       </Fragment>
