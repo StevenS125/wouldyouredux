@@ -1,10 +1,11 @@
 import React, { Component } from 'react';
 import { connect } from 'react-redux';
+import { setAuthedUser } from '../actions/authedUser'
 
 class Login extends Component {
     constructor(props) {
         super(props);
-        this.state = {value: 'coconut'};
+        this.state = {value: 'tylermcginnis'};
       }
 
       handleChange = (event) => {
@@ -12,8 +13,12 @@ class Login extends Component {
       }
     
       handleSubmit = (event) => {
-        alert('Your favorite flavor is: ' + this.state.value);
         event.preventDefault();
+        const { dispatch } = this.props
+    
+        // Set User
+    
+        dispatch(setAuthedUser(this.state.value))
       }
 
   render() {
