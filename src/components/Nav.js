@@ -37,7 +37,10 @@ class Nav extends Component {
         </li>
       </ul>
       { this.props.authedUser === null ? null :
+          <div>
+          <span>{this.props.authedUser}</span>
           <button onClick={this.handleLogOut}>Log Out</button>
+          </div>
         }
     </nav>
   )

@@ -17,12 +17,11 @@ class Login extends Component {
         const { dispatch } = this.props
     
         // Set User
-    
         dispatch(setAuthedUser(this.state.value))
       }
 
   render() {
-      const { userIDs, users, authedUser} = this.props
+      const { userIDs, users} = this.props
 
     let userOptions = userIDs.map((ids) => {
         return <option key={ids} value={users[ids].id}>{users[ids].id}</option>
@@ -33,7 +32,7 @@ class Login extends Component {
       <h1>Please Login to Continue</h1>
       <form onSubmit={this.handleSubmit}>
         <label>
-          Pick your favorite flavor:
+          Your Login Name:
           <select value={this.state.value} onChange={this.handleChange}>
             {userOptions}
           </select>

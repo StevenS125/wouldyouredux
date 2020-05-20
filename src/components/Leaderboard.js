@@ -4,7 +4,7 @@ import { connect } from 'react-redux';
 class Leaderboard extends Component {
   render() {
       const { questionIDs, questions } = this.props
-        console.log(this.props.questions)
+        console.log(questions, questionIDs)
     return (
         <div>
       <h1>Leaderboard</h1>
