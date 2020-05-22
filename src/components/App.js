@@ -9,7 +9,6 @@ import LoadingBar from 'react-redux-loading'
 import Home from './Home'
 import NewQuestion from './NewQuestion'
 import LeaderBoard from './Leaderboard'
-import Question from './Question'
 import Nav from './Nav'
 import Login from './Login'
 
@@ -24,7 +23,7 @@ class App extends Component {
   }
 
   render() {
-const { loading, users, authedUser, questions, userIDs} = this.props
+const { loading} = this.props
 
 setTimeout(() => {
   console.log(loading)
