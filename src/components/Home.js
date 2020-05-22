@@ -1,7 +1,7 @@
 import React, { Component } from 'react';
 import { connect } from 'react-redux';
-import { Card, Button, CardTitle, CardText } from 'reactstrap';
-import Example from './questButtons'
+import { Card, CardTitle } from 'reactstrap';
+import Choices from './Choices'
 
 class Home extends Component {
   constructor(props) {
@@ -11,14 +11,16 @@ class Home extends Component {
       quest2Val: 0
     };
   }
+
+
   render() {
-      const { questionIDs, questions } = this.props
-        console.log(this.props.questions)
+      const { questionIDs } = this.props
+        console.log(this.props)
     let pop = questionIDs.map((ids, index) => {
-            return <div key={index} style={{width: '50%', margin:'0, 25%' }}>
+            return <div key={index} style={{width: '80%', marginLeft:'10%', marginRight:'10%' }}>
                     <Card style={{ width:'100%', textAlign:'left' }}>
                       <CardTitle style={{ textAlign:'center' }}>Would You Rather?</CardTitle>
-                          <Example optOne={questions[ids].optionOne.text} optTwo={questions[ids].optionTwo.text} />
+                          <Choices id={ids} />
                   </Card>
               </div>
         })
