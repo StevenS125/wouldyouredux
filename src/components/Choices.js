@@ -18,11 +18,14 @@ class Choices extends Component {
     e.preventDefault()
 
     // todo: Handle Like Tweet
-    const { dispatch, authedUser, id } = this.props
+    const { dispatch, authedUser, question, id } = this.props
     console.log(authedUser)
+    console.log(question.id)
+    console.log(id)
     const answer = this.state.questVal
+    const qid = question.id
 
-    dispatch(handleToggleVote({authedUser, id, answer }))
+    dispatch(handleToggleVote({authedUser, qid, answer }))
   }
 
 
@@ -55,7 +58,8 @@ function mapStateToProps ({ questions, authedUser }, { id }) {
   
   return {
     authedUser,
-    question: formatQuestion(question.optionOne.text, question.optionTwo.text, question.author)
+    question: question,
+    id: id
   }
 }
 
