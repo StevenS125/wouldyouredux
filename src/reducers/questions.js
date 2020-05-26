@@ -10,7 +10,7 @@ export default function questions (state = {}, action) {
     case TOGGLE_VOTE :
       const { authedUser, qid, answer } = action;
       console.log(qid)
-      console.log(answer),
+      console.log(answer)
       console.log(authedUser)
       return {
         ...state,

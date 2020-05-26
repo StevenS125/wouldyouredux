@@ -35,6 +35,9 @@ class Nav extends Component {
             Leaderboard
           </NavLink>
         </li>
+        {this.props.authedUser === null ?
+          <li><NavLink to='/login' activeClassName='active'>Login</NavLink></li> : null
+        }
       </ul>
       { this.props.authedUser === null ? null :
           <div>
