@@ -11,6 +11,7 @@ import NewQuestion from './NewQuestion'
 import LeaderBoard from './Leaderboard'
 import Nav from './Nav'
 import Login from './Login'
+import Choices from './Choices'
 
 
 
@@ -36,13 +37,13 @@ setTimeout(() => {
         <LoadingBar />
         <div className='container'>
           <Nav />
-          {this.props.loading === true
-            ? <Login />
-            : <div>
+               <div>
                 <Route path='/' exact component={Home} />
+                <Route path='/login' component={Login} />
                 <Route path='/new' component={NewQuestion} />
                 <Route path='/leaderboard' component={LeaderBoard} />
-              </div>}
+                <Route path='/question/:id' component={Choices} />
+              </div>
         </div>
       </Fragment>
     </Router>

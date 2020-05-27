@@ -14,10 +14,11 @@ class Login extends Component {
     
       handleSubmit = (event) => {
         event.preventDefault();
-        const { dispatch } = this.props
+        const { dispatch, history } = this.props
     
         // Set User
         dispatch(setAuthedUser(this.state.value))
+        history.push('/')
       }
 
   render() {
