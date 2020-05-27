@@ -1,6 +1,6 @@
 import React, { Component } from 'react';
 import { connect } from 'react-redux';
-import { Card, CardTitle, CardImg, TabContent, TabPane, Nav, NavItem, NavLink, Button, CardText, Row, Col } from 'reactstrap';
+import { Card, CardTitle, CardImg, TabContent, TabPane, Nav, NavItem, NavLink, Row, Col } from 'reactstrap';
 import Choices from './Choices'
 import classnames from 'classnames';
 
@@ -20,11 +20,9 @@ class Home extends Component {
     };
   }
 
-
   render() {
       const { questions, questionIDs, authedUser, users } = this.props
 
-      console.log(questions)
       let answered = questionIDs.map((ids, index) => {
         if (questions[ids].optionOne.votes.includes(authedUser) || questions[ids].optionTwo.votes.includes(authedUser)) {
         const getAuthorImg = users[questions[ids].author].avatarURL
@@ -38,6 +36,7 @@ class Home extends Component {
               </Card>
           </div>
         } 
+        return null
          })
 
          let unAnswered = questionIDs.map((ids, index) => {
@@ -53,6 +52,7 @@ class Home extends Component {
                 </Card>
             </div>
           } 
+          return null
            })
         
 

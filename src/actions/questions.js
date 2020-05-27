@@ -18,18 +18,19 @@ export function receiveQuestions (questions) {
     }
   }
 
-  export function handleAddQuestion (input1, input2) {
+  export function handleAddQuestion (optionOneText, optionTwoText ) {
     return (dispatch, getState) => {
       const { authedUser } = getState()
     
       dispatch(showLoading())
   
       return saveQuestion({
-        author: authedUser,
-        input1,
-        input2,
+        optionOneText,
+        optionTwoText,
+        author: authedUser
       })
-        .then((question) => dispatch(addQuestion(question)))
+        .then((question) => {
+        dispatch(addQuestion(question))})
         .then(() => dispatch(hideLoading()))
     }
   }

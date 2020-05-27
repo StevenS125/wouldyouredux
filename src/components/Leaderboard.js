@@ -3,7 +3,7 @@ import { connect } from 'react-redux';
 
 class Leaderboard extends Component {
   render() {
-      const { questionIDs, questions } = this.props
+      const { questionIDs, questions, authedUser } = this.props
         console.log(questions, questionIDs)
     return (
         <div>
@@ -13,7 +13,7 @@ class Leaderboard extends Component {
   }
 }
 
-function mapStateToProps ({ questions }) {
+function mapStateToProps ({ questions, authedUser }) {
 
     return {
       questionIDs: Object.keys(questions),

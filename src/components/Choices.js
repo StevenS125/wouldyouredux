@@ -57,7 +57,6 @@ class Choices extends Component {
 
 
   render() {
-    console.log(this.props)
 
     const { question } = this.props
     const quest1 = question.optionOne.text
