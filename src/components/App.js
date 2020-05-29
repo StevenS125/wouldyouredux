@@ -11,7 +11,7 @@ import NewQuestion from './NewQuestion'
 import LeaderBoard from './Leaderboard'
 import Nav from './Nav'
 import Login from './Login'
-import Choices from './Choices'
+import Question from './QuestionPage'
 
 
 
@@ -42,7 +42,7 @@ setTimeout(() => {
                 <Route path='/login' component={Login} />
                 <Route path='/new' component={NewQuestion} />
                 <Route path='/leaderboard' component={LeaderBoard} />
-                <Route path='/question/:id' component={Choices} />
+                <Route path='/question/:id' component={Question} />
               </div>
         </div>
       </Fragment>
