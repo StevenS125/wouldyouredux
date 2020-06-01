@@ -23,7 +23,9 @@ class Home extends Component {
   render() {
       const { questions, questionIDs, authedUser, users } = this.props
 
+
       let answered = questionIDs.map((ids, index) => {
+        console.log(ids)
         if (questions[ids].optionOne.votes.includes(authedUser) || questions[ids].optionTwo.votes.includes(authedUser)) {
         const getAuthorImg = users[questions[ids].author].avatarURL
         const getAuthorName = users[questions[ids].author].name
@@ -108,6 +110,16 @@ class Home extends Component {
 }
 
 function mapStateToProps ({ questions, authedUser, users }) {
+
+//   questions = Object.keys(questions).sort((a, b) => {
+//     return questions[a].timestamp - questions[b].timestamp 
+// }).reduce((prev, curr, i) => {
+//     prev[i] = questions[curr]
+//     console.log(prev)
+//     return prev
+// }, {});
+
+console.log(questions)
 
     return {
       questionIDs: Object.keys(questions),
