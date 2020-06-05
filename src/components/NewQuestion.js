@@ -2,6 +2,7 @@ import React, { Component } from 'react';
 import { connect } from 'react-redux';
 import { Form, FormGroup, Label, Input, FormFeedback, FormText, Button } from 'reactstrap';
 import { handleAddQuestion } from '../actions/questions';
+import { Link } from 'react-router-dom'
 
 class NewQuestion extends Component {
   constructor(props) {
@@ -38,8 +39,10 @@ class NewQuestion extends Component {
   }
 
   render() {
-
+    const { authedUser } = this.props
     return (
+      <div>
+        {authedUser ?
       <Form onSubmit={this.handleSubmit}>
         <h1>Create a New Question</h1>
       <FormGroup>
@@ -56,6 +59,13 @@ class NewQuestion extends Component {
        </FormGroup>
        <Button>Submit</Button>
      </Form>
+     : 
+     <div>
+     <h1>Please Login to create new question</h1> 
+     <Link to='/login'><Button>Login</Button></Link>
+       </div>
+  }
+     </div>
     );
   }
 }

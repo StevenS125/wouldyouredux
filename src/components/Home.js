@@ -1,7 +1,8 @@
 import React, { Component } from 'react';
 import { connect } from 'react-redux';
-import { Card, CardTitle, CardImg, TabContent, TabPane, Nav, NavItem, NavLink, Row, Col } from 'reactstrap';
+import { Card, CardTitle, CardImg, TabContent, TabPane, Nav, NavItem, NavLink, Row, Col, Button } from 'reactstrap';
 import Choices from './Choices'
+import { Link } from 'react-router-dom'
 import classnames from 'classnames';
 
 class Home extends Component {
@@ -25,7 +26,6 @@ class Home extends Component {
 
 
       let answered = questionIDs.map((ids, index) => {
-        console.log(ids)
         if (questions[ids].optionOne.votes.includes(authedUser) || questions[ids].optionTwo.votes.includes(authedUser)) {
         const getAuthorImg = users[questions[ids].author].avatarURL
         const getAuthorName = users[questions[ids].author].name
@@ -61,11 +61,13 @@ class Home extends Component {
         let answeredQuestions = authedUser ? answered: 
             <div>
                  <h1>Please Login to See individual results</h1> 
+                 <Link to='/login'><Button>Login</Button></Link>
             </div>
 
         let unAnsweredQuestions = authedUser ? unAnswered: 
             <div>
                  <h1>Please Login to See individual results</h1> 
+                 <Link to='/login'><Button>Login</Button></Link>
             </div>
 
     return (
@@ -119,7 +121,7 @@ function mapStateToProps ({ questions, authedUser, users }) {
 //     return prev
 // }, {});
 
-console.log(questions)
+// console.log(questions)
 
     return {
       questionIDs: Object.keys(questions),

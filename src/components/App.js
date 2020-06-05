@@ -40,7 +40,7 @@ setTimeout(() => {
                <div>
                 <Route path='/' exact component={Home} />
                 <Route path='/login' component={Login} />
-                <Route path='/new' component={NewQuestion} />
+                <Route path='/add' component={NewQuestion} />
                 <Route path='/leaderboard' component={LeaderBoard} />
                 <Route path='/question/:id' component={Question} />
               </div>

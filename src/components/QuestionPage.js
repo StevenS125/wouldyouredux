@@ -1,6 +1,7 @@
 import React, { Component } from 'react';
 import { connect } from 'react-redux';
-import { Card, CardTitle, CardImg } from 'reactstrap';
+import { Card, CardTitle, CardImg, Button } from 'reactstrap';
+import { Link } from 'react-router-dom'
 import Choices from './Choices'
 
 
@@ -21,12 +22,14 @@ class Question extends Component {
   }
 
   render() {
-      const { id, questions, users } = this.props
+      const { id, questions, users, authedUser } = this.props
 
       const getAuthorImg = questions[id] ? users[questions[id].author].avatarURL : null
       const getAuthorName = questions[id] ? users[questions[id].author].name : null
      
     return (
+        <div>
+        {authedUser ? 
         <div style={{width: '100%', marginBottom: 10}}>
                 <Card style={{ width:'100%', textAlign:'left' }}>
                     { questions[id] &&
@@ -37,7 +40,13 @@ class Question extends Component {
                       </div>
                 }
               </Card>
-          </div>
+          </div> :
+          <div>
+          <h1>Please Login to See individual results</h1> 
+          <Link to='/login'><Button>Login</Button></Link>
+            </div>
+  }
+  </div>
     );
   }
 }

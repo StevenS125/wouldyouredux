@@ -17,6 +17,10 @@ class Nav extends Component {
   }
 
   render() {
+    const {users, authedUser} = this.props
+
+    const authedUserURL = authedUser && users[authedUser].avatarURL
+
   return (
     <nav className='nav'>
       <ul>
@@ -26,7 +30,7 @@ class Nav extends Component {
           </NavLink>
         </li>
         <li>
-          <NavLink to='/new' activeClassName='active'>
+          <NavLink to='/add' activeClassName='active'>
             New Question
           </NavLink>
         </li>
@@ -38,13 +42,13 @@ class Nav extends Component {
         {this.props.authedUser === null ?
           <li><NavLink to='/login' activeClassName='active'>Login</NavLink></li> : null
         }
+        <li><div className="col-sm-3"></div></li>
+        <li style={{marginTop: -10, paddingTop:0}}> { 
+        this.props.authedUser === null ? null : <div><span><img className="avatar" src={authedUserURL} alt={authedUser}></img></span><span>{this.props.authedUser}</span></div>
+        }</li>
+        <li style={{marginTop: -5, paddingTop:0}}> { this.props.authedUser === null ? null : <button onClick={this.handleLogOut}>Log Out</button>
+        }</li>
       </ul>
-      { this.props.authedUser === null ? null :
-          <div>
-          <span>{this.props.authedUser}</span>
-          <button onClick={this.handleLogOut}>Log Out</button>
-          </div>
-        }
     </nav>
   )
 }
